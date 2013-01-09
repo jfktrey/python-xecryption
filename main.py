@@ -5,6 +5,7 @@
 #TODO: make it so you can choose which char in "Quick" method (radiobuttons w/ most common letters, last radiobutton for custom input field)
 
 from tkinter import *
+from tkinter.ttk import *
 import os
 
 global restoreText, passVal, yesno
@@ -27,7 +28,7 @@ class Alert(Toplevel):
         
         Label(self, text=dtext).pack()
         b = Button(self, text="OK", command=self.kill)
-        b.pack(pady=5)
+        b.pack()
         
         
         self.focus_set()
@@ -110,9 +111,9 @@ class PassPrompt(Toplevel):
         
         Label(self, text="Password value?").pack()
         self.e = Entry(self)
-        self.e.pack(padx=5)
+        self.e.pack()
         b = Button(self, text="OK", command=self.ok)
-        b.pack(pady=5)
+        b.pack()
         
         
         self.e.focus_set()
@@ -155,14 +156,14 @@ class YesNoTextDialog(Toplevel):
         self.sbar.config(command=self.tbox.yview)
         
         
-        self.diagFrame = LabelFrame(self, text="Correct?", padx=10, pady=3)
-        self.diagFrame.pack(pady=3)
+        self.diagFrame = LabelFrame(self, text="Correct?")
+        self.diagFrame.pack()
         self.cpy = Button(self.diagFrame, text="Yes", command=self.yes)
-        self.cpy.grid(row=0,column=0, padx=3, pady=0)
+        self.cpy.grid(row=0,column=0)
         self.ok = Button(self.diagFrame, text="No", command=self.no)
-        self.ok.grid(row=0,column=1, padx=3, pady=0)
+        self.ok.grid(row=0,column=1)
         self.cancel = Button(self.diagFrame, text="Cancel", command=self.cancel)
-        self.cancel.grid(row=0,column=2, padx=3, pady=0)
+        self.cancel.grid(row=0,column=2)
         
         
         self.focus_set()
@@ -346,41 +347,6 @@ def three_to_one_func(text):
     
     else:
         return -1
-        
-
-#def numInList(num, nestList):
-#    if nestList != []:
-#        for i in range(0, len(nestList)):
-#            if str(nestList[i][0]) == str(num):
-#                return -1
-#        return i
-#
-#def getTopSix(list):
-#    newListOrder=[]
-#    
-#    for i in list:
-#        if newListOrder != []:
-#            lastPosition = 0
-#            inserted = False
-#            for i2 in range(0,len(newListOrder)):
-#                if i[1] > newListOrder[i2][1]:
-#                    newListOrder.insert(lastPosition, i)
-#                    inserted = True
-#                    break
-#                else:
-#                    lastPosition += 1
-#            if not inserted:
-#                newListOrder.append(i)
-#        else:
-#            newListOrder = [i]
-#
-#    toReturn = []
-#    n = 0
-#    while n < 6:
-#        toReturn.append(newListOrder[n])
-#        n+=1
-#    
-#    return toReturn
 
 def mode_of_one_func(text):
     textArray = text.split("\n")
@@ -430,26 +396,26 @@ scrollbar.config(command=tbox.yview)
 bottom = Frame(root)
 bottom.pack()
 
-group2 = LabelFrame(bottom, text="Function", padx=5, pady=5)
-group2.grid(row=0, column=0, padx=10, pady=10)
+group2 = LabelFrame(bottom, text="Function")
+group2.grid(row=0, column=0)
 
 button2_1 = Button(group2, text="Paste", command=paste_call)
-button2_1.grid(row=0,column=0, padx=3, pady=0)
+button2_1.grid(row=0,column=0)
 button2_2 = Button(group2, text="Copy all", command=copy_call)
-button2_2.grid(row=0,column=1, padx=3, pady=0)
+button2_2.grid(row=0,column=1)
 button2_3 = Button(group2, text="Clear", command=delete_call)
-button2_3.grid(row=0,column=2, padx=3, pady=0)
+button2_3.grid(row=0,column=2)
 button2_4 = Button(group2, text="Restore", command=restore_call)
-button2_4.grid(row=0,column=3, padx=3, pady=0)
+button2_4.grid(row=0,column=3)
 
-group1 = LabelFrame(bottom, text="Crack Methods", padx=5, pady=5)
-group1.grid(row=0, column=1, padx=10, pady=10)
+group1 = LabelFrame(bottom, text="Crack Methods")
+group1.grid(row=0, column=1)
 
 button1_1 = Button(group1, text="Quick", command=quick_call)
-button1_1.grid(row=0,column=0, padx=3, pady=0)
+button1_1.grid(row=0,column=0)
 button1_2 = Button(group1, text="Thorough", command=thorough_call)
-button1_2.grid(row=0,column=1, padx=3, pady=0)
+button1_2.grid(row=0,column=1)
 button1_3 = Button(group1, text="Decode w/ pass", command=decode_call)
-button1_3.grid(row=0,column=2, padx=3, pady=0)
+button1_3.grid(row=0,column=2)
 
 root.mainloop()
